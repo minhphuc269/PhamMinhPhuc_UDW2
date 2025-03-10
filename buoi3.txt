@@ -1,0 +1,57 @@
+1. Transactions
+Khái niệm: Một giao dịch là một chuỗi các thao tác trên cơ sở dữ liệu được thực hiện như một đơn vị công việc duy nhất. Nó đảm bảo tính ACID (Atomicity, Consistency, Isolation, Durability).
+Các thuộc tính của giao dịch:
+    Atomicity (Tính nguyên tử): Tất cả các thao tác trong giao dịch phải hoàn thành thành công hoặc không có thao tác nào được thực hiện.
+    Consistency (Tính nhất quán): Giao dịch phải đưa cơ sở dữ liệu từ một trạng thái hợp lệ sang một trạng thái hợp lệ khác.
+    Isolation (Tính độc lập): Các giao dịch xảy ra đồng thời không ảnh hưởng lẫn nhau.
+    Durability (Tính bền vững): Khi giao dịch đã được commit, kết quả của nó phải được lưu trữ vĩnh viễn.
+Ưu điểm:
+    Đảm bảo tính toàn vẹn và nhất quán của dữ liệu.
+    Hỗ trợ xử lý các tác vụ phức tạp một cách an toàn.
+    Dễ dàng rollback nếu có lỗi xảy ra.
+Nhược điểm:
+    Có thể gây ra hiện tượng khóa và deadlock nếu không quản lý tốt.
+    Tốn tài nguyên hệ thống khi xử lý nhiều giao dịch đồng thời.
+
+2. Procedures
+Khái niệm: Procedure là một tập hợp các câu lệnh SQL được lưu trữ trong cơ sở dữ liệu và có thể được gọi lại nhiều lần. Nó giống như một hàm trong lập trình.
+Đặc điểm:
+    Có thể nhận tham số đầu vào và trả về kết quả.
+    Giúp tái sử dụng mã và tăng hiệu suất bằng cách thực thi các câu lệnh trên máy chủ cơ sở dữ liệu.
+Ưu điểm:
+    Tái sử dụng mã, giảm trùng lặp.
+    Tăng hiệu suất bằng cách thực thi trên máy chủ cơ sở dữ liệu.
+    Dễ dàng bảo trì và quản lý.
+Nhược điểm:
+    Khó debug và kiểm tra lỗi.
+    Phụ thuộc vào hệ quản trị cơ sở dữ liệu cụ thể, khó di chuyển giữa các hệ thống khác nhau.
+    Có thể làm tăng độ phức tạp của cơ sở dữ liệu nếu sử dụng quá nhiều.
+
+3. Triggers
+Khái niệm: Trigger là một đoạn mã tự động được thực thi khi một sự kiện cụ thể xảy ra trong cơ sở dữ liệu
+Đặc điểm:
+    Được kích hoạt trước hoặc sau khi sự kiện xảy ra.
+    Thường được sử dụng để thực hiện các tác vụ như kiểm tra ràng buộc, ghi log, hoặc cập nhật dữ liệu tự động.
+Ưu điểm:
+    Tự động hóa các tác vụ, giảm thiểu sự can thiệp thủ công.
+    Đảm bảo tính nhất quán của dữ liệu bằng cách thực thi các quy tắc nghiệp vụ.
+    Hữu ích cho việc ghi log và kiểm tra lịch sử thay đổi dữ liệu.
+Nhược điểm:
+    Khó debug và theo dõi vì chúng được kích hoạt tự động.
+    Có thể gây ra hiệu ứng phụ không mong muốn nếu không được thiết kế cẩn thận.
+    Làm chậm các thao tác INSERT, UPDATE, DELETE vì trigger cần được thực thi.
+
+4. Index
+Khái niệm: Index là một cấu trúc dữ liệu giúp tăng tốc độ truy vấn dữ liệu bằng cách giảm số lượng dữ liệu cần quét.
+Đặc điểm:
+    Được tạo trên một hoặc nhiều cột của bảng.
+    Giúp tối ưu hóa các truy vấn tìm kiếm, sắp xếp và kết hợp.
+    Có thể làm chậm quá trình ghi dữ liệu vì chỉ mục cần được cập nhật.
+Ưu điểm:
+    Tăng tốc độ truy vấn dữ liệu, đặc biệt là với các bảng lớn.
+    Cải thiện hiệu suất của các truy vấn tìm kiếm, sắp xếp và JOIN.
+    Dễ dàng tạo và quản lý.
+Nhược điểm:
+    Tốn không gian lưu trữ để lưu trữ chỉ mục.
+    Làm chậm các thao tác ghi dữ liệu vì chỉ mục cần được cập nhật.
+    Cần được thiết kế cẩn thận để tránh tạo quá nhiều chỉ mục không cần thiết.
